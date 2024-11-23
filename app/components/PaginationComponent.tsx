@@ -17,7 +17,7 @@ function PaginationComponent({ totalPages }: { totalPages: number }) {
       {Array.from({ length: totalPages }, (_, i) => (
         <button
           key={i}
-          className={`join-item btn ${
+          className={`join-item btn btn-lg ${
             i + 1 === currentPage ? "btn-active" : ""
           }`}
           onClick={() => handlePageChange(i + 1)}

@@ -4,12 +4,17 @@ import ModalComponent from "./components/ModalComponent";
 import NoteForm from "./components/NoteForm";
 import PaginationComponent from "./components/PaginationComponent";
 
-async function page({ searchParams }) {
+type PageProps = {
+  searchParams: { page: string };
+};
+
+async function page({ searchParams }: PageProps) {
+  const page = await searchParams;
   const notes = await getAllNote();
   const pinnedNotes = notes.filter((note) => note.pinned === true);
   const unpinnedNotes = notes.filter((note) => note.pinned === false);
   const itemsPerPage = 6;
-  const currentPage = Number(searchParams.page) || 1;
+  const currentPage = Number(page) || 1;
   const totalUnpinnedNotes = Math.ceil(unpinnedNotes.length / itemsPerPage);
   const paginatedUnpinnedNotes = unpinnedNotes.slice(
     (currentPage - 1) * itemsPerPage,

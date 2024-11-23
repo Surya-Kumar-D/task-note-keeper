@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "note Keeper",
   description: "A try to make a clone of google keep",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
