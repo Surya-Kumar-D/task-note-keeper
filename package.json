@@ -6,12 +6,13 @@
     "dev": "next dev",
     "build": "npx prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "npm install --legacy-peer-deps && prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "lucide-react": "^0.460.0",
-    "next": "^15.0.3",
+    "next": "canary",
     "react": "^19.0.0-rc-91061073-20241121",
     "react-dom": "^19.0.0-rc-91061073-20241121",
     "react-hot-toast": "^2.4.1",
@@ -23,10 +24,14 @@
     "@types/react-dom": "^18",
     "daisyui": "^4.12.14",
     "eslint": "^8",
-    "eslint-config-next": "14.2.7",
+    "eslint-config-next": "canary",
     "postcss": "^8",
     "prisma": "^5.22.0",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "autoprefixer": "^10.0.1"
+  },
+  "engines": {
+    "node": ">=18.17.0"
   }
 }
