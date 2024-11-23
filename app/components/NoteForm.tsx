@@ -27,12 +27,12 @@ function NoteForm() {
     <div className="w-full flex items-center justify-center">
       <form
         action={formAction}
-        className="flex md:text-[2rem] gap-y-5 flex-col  items-center justify-center w-[65%]"
+        className="flex md:text-[1.5rem] gap-y-5 flex-col  items-center justify-center w-[65%]"
       >
         <label htmlFor="title" className="h-full w-full flex gap-[2rem]  ">
           Title
           <input
-            className="border-0 "
+            className="border-0 p-[1rem] w-full"
             type="text"
             id="title"
             name="title"
@@ -43,7 +43,7 @@ function NoteForm() {
         <label htmlFor="tagline" className="h-full w-full flex gap-[2rem]  ">
           Tagline
           <input
-            className="border-0 w"
+            className="border-0 p-[1rem] w-full"
             type="text"
             id="tagline"
             name="tagline"
@@ -54,7 +54,7 @@ function NoteForm() {
         <label htmlFor="body" className="h-full w-full flex gap-[2rem] ">
           Body
           <textarea
-            className="border-0 w-full"
+            className="border-0 p-[1rem] w-full"
             id="body"
             name="body"
             placeholder="Minutes of the meeting..."
