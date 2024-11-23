@@ -1,8 +1,9 @@
+"use client";
 import { addNote } from "@/utils/actions";
 import Button from "./Button";
 import { Children } from "react";
 
-function NoteForm({ children }) {
+function NoteForm() {
   return (
     <div className="w-full flex items-center justify-center">
       <form
@@ -41,7 +42,7 @@ function NoteForm({ children }) {
             aria-label="Note Tagline"
           />
         </label>
-        {children}
+        <Button />
       </form>
     </div>
   );

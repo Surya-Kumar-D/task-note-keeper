@@ -13,4 +13,5 @@ model note {
     tagline String
     body String
     createdAt DateTime @default(now())
+    pinned Boolean @default(false)
 }
