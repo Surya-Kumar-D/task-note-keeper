@@ -4,6 +4,8 @@ import { createContext, useContext, useState } from "react";
 type ThemeContextType = {
   isDarkMode: "light" | "dark";
   setIsDarkMode: React.Dispatch<React.SetStateAction<"light" | "dark">>;
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -14,8 +16,16 @@ type ThemeProviderProps = {
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [isDarkMode, setIsDarkMode] = useState<"light" | "dark">("light");
+  const [currentPage, setCurrentPage] = useState<number>(1);
   return (
-    <ThemeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
+    <ThemeContext.Provider
+      value={{
+        isDarkMode,
+        setIsDarkMode,
+        currentPage,
+        setCurrentPage,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

@@ -1,16 +1,15 @@
 "use client";
 import { addNote, revalidateNotes } from "@/utils/actions";
-import Button from "./Button";
 import { useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { revalidatePath } from "next/cache";
+import Button from "./Button";
 
-type InitialState = {
+export type InitialState = {
   message: string;
   status: "success" | "failure";
 } | null;
 
-const initialState: InitialState = null;
+export const initialState: InitialState = null;
 
 function NoteForm() {
   const [state, formAction] = useActionState(addNote, initialState);
@@ -27,7 +26,7 @@ function NoteForm() {
     <div className="w-full flex items-center justify-center">
       <form
         action={formAction}
-        className="flex md:text-[1.5rem] gap-y-5 flex-col  items-center justify-center w-[65%]"
+        className="flex md:text-[1.5rem] gap-y-5 flex-col  items-center justify-center w-[65%] xl:w-[45%]"
       >
         <label htmlFor="title" className="h-full w-full flex gap-[2rem]  ">
           Title

@@ -2,6 +2,7 @@ import { getAllNote } from "@/utils/actions";
 import Button from "./components/Button";
 import ModalComponent from "./components/ModalComponent";
 import NoteForm from "./components/NoteForm";
+import PaginationComponent from "./components/PaginationComponent";
 
 async function page() {
   const notes = await getAllNote();
@@ -19,7 +20,9 @@ async function page() {
         </>
       ) : null}
       <p className="font-bold text-2xl">Others</p>
-      <ModalComponent notes={unpinnedNotes} />
+      <ModalComponent notes={unpinnedNotes}>
+        <PaginationComponent />
+      </ModalComponent>
     </div>
   );
 }
