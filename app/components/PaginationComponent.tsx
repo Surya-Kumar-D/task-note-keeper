@@ -1,10 +1,30 @@
-function PaginationComponent() {
+"use client";
+import { useRouter } from "next/navigation";
+import { Note } from "../types/noteType";
+import { useThemeToggle } from "./ThemeProvider";
+
+function PaginationComponent({ totalPages }: { totalPages: number }) {
+  const { currentPage, setCurrentPage } = useThemeToggle();
+  const router = useRouter();
+
+  const handlePageChange = (pageNumber: number) => {
+    router.push(`/?page=${pageNumber}`);
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div className="join flex items-center justify-center">
-      <button className="join-item btn">1</button>
-      <button className="join-item btn btn-active">2</button>
-      <button className="join-item btn">3</button>
-      <button className="join-item btn">4</button>
+      {Array.from({ length: totalPages }, (_, i) => (
+        <button
+          key={i}
+          className={`join-item btn ${
+            i + 1 === currentPage ? "btn-active" : ""
+          }`}
+          onClick={() => handlePageChange(i + 1)}
+        >
+          {i + 1}
+        </button>
+      ))}
     </div>
   );
 }

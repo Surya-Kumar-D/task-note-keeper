@@ -5,8 +5,6 @@ function Button() {
   const { pending } = useFormStatus();
   return (
     <button className="btn btn-outline">
-      {/* <NotebookPen /> */}
-      {/* Add Note */}
       {pending ? (
         <span className="loading loading-dots loading-xs"></span>
       ) : (

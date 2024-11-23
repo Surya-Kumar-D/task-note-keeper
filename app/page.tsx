@@ -1,15 +1,21 @@
 import { getAllNote } from "@/utils/actions";
-import Button from "./components/Button";
+
 import ModalComponent from "./components/ModalComponent";
 import NoteForm from "./components/NoteForm";
 import PaginationComponent from "./components/PaginationComponent";
 
-async function page() {
+async function page({ searchParams }) {
   const notes = await getAllNote();
   const pinnedNotes = notes.filter((note) => note.pinned === true);
   const unpinnedNotes = notes.filter((note) => note.pinned === false);
-  console.log(pinnedNotes);
-  console.log(unpinnedNotes);
+  const itemsPerPage = 6;
+  const currentPage = Number(searchParams.page) || 1;
+  const totalUnpinnedNotes = Math.ceil(unpinnedNotes.length / itemsPerPage);
+  const paginatedUnpinnedNotes = unpinnedNotes.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   return (
     <div className="flex flex-col gap-5">
       <NoteForm />
@@ -20,8 +26,8 @@ async function page() {
         </>
       ) : null}
       <p className="font-bold text-2xl">Others</p>
-      <ModalComponent notes={unpinnedNotes}>
-        <PaginationComponent />
+      <ModalComponent notes={paginatedUnpinnedNotes}>
+        <PaginationComponent totalPages={totalUnpinnedNotes} />
       </ModalComponent>
     </div>
   );

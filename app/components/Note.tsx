@@ -20,6 +20,7 @@ function Note({ note }: { note: Note }) {
     if (updateState?.status === "success") {
       toast.success(updateState.message);
       revalidateNotes();
+
       document?.getElementById(modalId)?.close();
     }
   }, [updateState]);
@@ -30,14 +31,19 @@ function Note({ note }: { note: Note }) {
         className="btn relative min-w-[250px] flex flex-col gap-5 h-full p-[1rem] items-start "
         onClick={() => document?.getElementById(modalId)?.showModal()}
       >
-        {note.pinned ? <Pin className="absolute top-0 right-0" /> : null}
+        {note.pinned ? (
+          <Pin className="absolute top-0 text-primary right-0" />
+        ) : null}
         <h2 className="md:text-2xl font-bold">{note.title}</h2>
         <h3 className="md:text-xl font-semibold">{note.tagline}</h3>
         <p>{note.body.slice(0, 100) + "..."}</p>
       </button>
       <dialog id={modalId} className="modal md:text-[1.5rem] ">
-        <div className="modal-box box-content p-[4rem]">
-          <form className="flex flex-col  gap-5 " action={updateAction}>
+        <div className="modal-box box-content max-w-[70%]  md:max-w-[50%] p-[4rem] ">
+          <form
+            className="flex flex-col  gap-5 mb-[4rem]"
+            action={updateAction}
+          >
             <input type="hidden" name="id" value={note.id} />
             <input type="hidden" name="pinned" value={note.pinned ? 1 : 0} />
             <div className="flex gap-5">
@@ -66,7 +72,7 @@ function Note({ note }: { note: Note }) {
                 aria-label="Tagline of the note"
               />
             </div>
-            <div className="flex gap-5">
+            <div className="flex gap-5 mb-[2rem]">
               <label className="w-1/5" htmlFor="body">
                 Body
               </label>
