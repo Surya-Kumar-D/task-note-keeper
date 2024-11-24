@@ -8,7 +8,7 @@ function PaginationComponent({ totalPages }: { totalPages: number }) {
   const router = useRouter();
 
   const handlePageChange = (pageNumber: number) => {
-    router.push(`/?page=${pageNumber}`);
+    router.push(`/?page=${pageNumber}`, { scroll: false });
     setCurrentPage(pageNumber);
   };
 
